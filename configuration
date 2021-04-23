@@ -1,0 +1,49 @@
+#!/usr/bin/python3
+# -*- Author : Karnain
+#
+
+from configparser import ConfigParser
+import os as console
+
+root = console.path.join(console.path.dirname(console.path.realpath(__file__)))
+initialize = ConfigParser()
+
+
+class expand_path:
+    def common_engine():
+        initialize["require"] = {
+            'Path': '{}/bin'.format(root),
+            'root': '{}'.format(root),
+            'php' : '{}/php'.format(root)
+        }
+        console.chdir("{}/lib/hacklovers/ui/console/".format(root))
+        with open('.config.cfg', 'w') as f:
+            initialize.write(f)
+        expand_path.All_environments()
+        pass
+    def All_environments():
+        initialize["require"] = {
+            'Banner': '{}/lib/hacklovers/ui/console/banner.py'.format(root),
+            'System': '{}/lib/hacklovers/ui/console/console.py'.format(root)
+        }
+        console.chdir("{}/config/".format(root))
+        with open('LinkTracker.cfg', 'w') as f:
+            initialize.write(f)
+        expand_path.Development()
+        pass
+    def Development():
+        initialize["require"] = {
+            'log':  '{}/log'.format(root),
+            'php':  '{}/php'.format(root),
+            'home': '{}'.format(root),
+            'Banner': '{}/lib/hacklovers/ui/console/banner.py'.format(root),
+            'bin': '{}/bin'.format(root)
+        }
+        console.chdir("{}/bin/".format(root))
+        with open('.config.cfg', 'w') as f:
+            initialize.write(f)
+        pass
+
+if __name__ == "__main__":
+    expand_path.common_engine()
+    pass
