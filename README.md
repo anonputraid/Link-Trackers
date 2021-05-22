@@ -58,6 +58,31 @@ Supported OS : **Ubuntu**/Linux Mint/Kali Linux
 [**CHANGELOG**](doc/CHANGELOG.md) |
 
 
+## CVE-2019-11932: Whatsapp Vuln RCE Version Check :
+<p align="center">
+<img src="https://github.com/anonputraid/Link-Trackers/blob/main/src/img/Link%20Trackers%202021-05-23_01-45.png">
+</p>
+
+
+```text
+# Information
+Exploit Title: Whatsapp 2.19.216 - Remote Code Execution
+CVE: CVE-2019-11932
+Exploitation Video : https://www.youtube.com/watch?v=loCq8OTZEGI
+Exploit-db : https://www.exploit-db.com/exploits/47515
+
+# Exploit Steps :
+
+1. Run the Link Trackers Tools
+2. Send Trackers Link To Target Whatsapp
+3. Then Select N In Terminal
+4. You Will Get Version Info
+```
+
+
+
+
+
 ## How To Install ?
 ```text
  # clone the repo
