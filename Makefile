@@ -10,10 +10,10 @@ SHELL := /bin/bash
 
 build-run:
 	@sudo apt update 
-	@sudo apt install php7.4-cli 
-	@sudo apt install whois 
-	@sudo apt install python3 
-	@sudo apt install python3-pip 
+	@sudo apt install php7.4-cli -y
+	@sudo apt install whois -y
+	@sudo apt install python3 -y
+	@sudo apt install python3-pip -y 
 	@sudo pip install -r requirements.txt 
 	@mv configuration .configuration 
 	@sudo python3 .configuration 
