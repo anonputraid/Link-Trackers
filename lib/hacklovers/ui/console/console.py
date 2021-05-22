@@ -34,7 +34,7 @@ class compatibility:
                     console.system("unzip ngrok-stable-linux-386.zip > /dev/null 2>&1")
                     console.system("chmod +x ngrok")
                     console.remove("ngrok-stable-linux-386.zip")
-                    pass
+                    print(Fore.GREEN + '[+] Done! Run Back' + Style.RESET_ALL)
                 else:
                     print(Fore.RED + "\n[-] Download Error... "+ Style.RESET_ALL )
                 pass
