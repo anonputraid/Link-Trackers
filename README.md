@@ -85,7 +85,17 @@ Exploit-db : https://www.exploit-db.com/exploits/47515
 
 ## How To Install ?
 ```text
+ # clone the repo
+ $ git clone https://github.com/anonputraid/Link-Tracker.git
+ 
+ # change the working directory to Link-Tracker
+ $ cd Link-Tracker
 
+ # Makefile ( Easy Mode)
+ $ make build-run   
+
+ # Run the main.py script
+ $ python3 main.py 
 ```
 
 ## Contributing 💡
