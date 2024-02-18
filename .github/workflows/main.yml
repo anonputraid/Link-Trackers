@@ -1,28 +1,20 @@
-name: Link Trackers
+name: Generate JSDoc
 
-on: [push, workflow_dispatch]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-        with:
-          ref: 02-solution-study-case
-      
-      - name: Build
-        uses: andstor/jsdoc-action@v1
-        with:
-          source_dir: ./doc
-          recurse: true
-          output_dir: ./out
-          config_file: ./assets/jsdoc/conf.json
-          template: minami
-          front_page: README.md
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run JSDoc
+      run: npx jsdoc -c jsdoc.config.js
