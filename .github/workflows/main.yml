@@ -8,13 +8,3 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Install dependencies
-      run: npm install
-
-    - name: Run JSDoc
-      run: npx jsdoc -c jsdoc.config.js
